@@ -1,0 +1,33 @@
+header {
+    padding: 50px;
+    background-color: #39855a;
+    color: white;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    margin: 50px;
+}
+
+.card {
+    width: 300px;
+    margin-left: 20px;
+}
+
+.card-header {
+    background-color: #c4852d;
+    color: white;
+}
+
+.card-body {
+    background-color: #f7f7f7;
+    padding: 15px;
+}
+
+.card p {
+    background-color: white;
+    margin: 2px;
+    padding: 8px;
+    border-radius: 2px;
+}

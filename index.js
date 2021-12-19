@@ -151,4 +151,10 @@ inquirer
                 return;
             }
         });
+        fs.copyFile('./src/style.css', './dist/style.css', err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+        });
     });

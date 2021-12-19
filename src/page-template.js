@@ -7,20 +7,21 @@ const generateCard = employee => {
     if (employee.getRole() === 'Manager') {
         otherInfo = 'Office number: ' + employee.getOfficeNumber();
     } else if (employee.getRole() === 'Engineer') {
-        otherInfo = 'GitHub: ' + employee.getGithub();
+        var githubLink = 'https://github.com/' + employee.getGithub();
+        otherInfo = 'GitHub: <a href="' + githubLink + '" target="_blank">' + employee.getGithub() + '</a>';
     } else {
         otherInfo = 'School: ' + employee.getSchool();
     }
 
     return `
-        <section>
-            <div>
-                <h1>${employee.getName()}</h1>
-                <h2>${employee.getRole()}</h2>
+        <section class='card'>
+            <div class='card-header'>
+                <h2>${employee.getName()}</h2>
+                <h3>${employee.getRole()}</h3>
             </div>
-            <div>
+            <div class='card-body'>
                 <p>ID: ${employee.getId()}</p>
-                <p>Email: ${employee.getEmail()}</p>
+                <p>Email: <a href="mailto: ${employee.getEmail()}">${employee.getEmail()}</a></p>
                 <p>${otherInfo}</p>
             </div>
         </section>
@@ -32,7 +33,6 @@ const generateCardsFromArray = arr => {
     for (var i = 0; i < arr.length; i++) {
         cardHtml += generateCard(arr[i]);
     }
-    console.log(cardHtml);
     return cardHtml;
 }
 
@@ -48,7 +48,6 @@ module.exports = answers => {
             employeeArr.push(intern);
         }
     }
-    console.log(employeeArr);
 
     return `
     <!DOCTYPE html> 
@@ -57,14 +56,21 @@ module.exports = answers => {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel='stylesheet' href='style.css'>
         <title>Team Profile</title>
     </head>
 
     <body>
 
-        ${generateCard(manager)}
-        ${generateCardsFromArray(employeeArr)}
+        <header>
+            <h1 class='text-center'>My Team</h1>
+        </header>
+
+        <main>
+            ${generateCard(manager)}
+            ${generateCardsFromArray(employeeArr)}
+        </main>
 
     </body>
     </html>
