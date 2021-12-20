@@ -1,4 +1,4 @@
-# Professional Team Profile Generator 
+# Professional Team Employee Profile Generator 
 
 ## Description
 A team profile generator that creates a file from the command line using user input from prompts.
